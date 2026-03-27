@@ -8,7 +8,12 @@ function Register() {
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
-    const response = await api.post("/users", { email, password, name });
+    try {
+      const response = await api.post("/users", { email, password, name });
+      console.log("User created:", response.data);
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   }
   return (
     <div className="max-w-sm mx-auto mt-24 flex flex-col gap-3">
