@@ -5,7 +5,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin(e: React.SubmitEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     const response = await api.post("/auth/login", { email, password });
     localStorage.setItem("accessToken", response.data.access_token);
