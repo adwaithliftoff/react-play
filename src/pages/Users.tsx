@@ -23,15 +23,28 @@ function Users() {
   }, []);
 
   return (
-    <div>
+    <div className="p-6">
       <h2>All Users</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.id + " " + user.name + " " + user.email + " " + user.role}
-          </li>
-        ))}
-      </ul>
+      <table className="w-full">
+        <thead>
+          <tr>
+            <th className="p-3 border-b">ID</th>
+            <th className="p-3 border-b">Name</th>
+            <th className="p-3 border-b">Email</th>
+            <th className="p-3 border-b">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id} className="border-b hover:bg-black/50">
+              <td className="p-3">{user.id}</td>
+              <td className="p-3">{user.name}</td>
+              <td className="p-3">{user.email}</td>
+              <td className="p-3">{user.role}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
