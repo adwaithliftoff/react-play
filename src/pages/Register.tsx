@@ -1,7 +1,9 @@
 import { useState } from "react";
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -11,6 +13,9 @@ function Register() {
     try {
       const response = await api.post("/users", { email, password, name });
       console.log("User created:", response.data);
+      if (response.status === 201) {
+        navigate("/login");
+      }
     } catch (error) {
       console.error("Registration failed:", error);
     }
